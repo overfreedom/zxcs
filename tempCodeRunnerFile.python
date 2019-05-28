@@ -1,0 +1,14 @@
+# -*- coding: utf-8 -*-
+import zxcs.database as db
+
+cs = db.connection.cursor()
+
+sql = 'select title,downloadurl from zxcsitem where xiancao - ducao > 100 limit 100'
+
+try:
+    cs.execute(sql)
+    results = cs.fetchall()
+    for row in results:
+        print(' %s' % ( row[1]))        
+except Exception as e:
+    print('error' , e)
